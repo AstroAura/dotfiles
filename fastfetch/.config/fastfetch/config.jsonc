@@ -74,7 +74,7 @@
         {
             "type": "gpu",
             "format": "{3}",
-            "key": "   GPU Driver",
+            "key": "   GPU Driver",
             "keyColor": "magenta"
         },
         {
