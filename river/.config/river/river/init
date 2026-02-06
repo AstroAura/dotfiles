@@ -1,0 +1,133 @@
+!/bin/sh
+MOD=Super
+$scrPath = $HOME/.local/share/bin # set scripts path
+### -----------------
+### Applications
+### -----------------
+TERM="kitty"
+FILE="kitty -e yazi"
+BROWSER="librewolf"
+
+### -----------------
+### Core actions
+### -----------------
+riverctl map normal $MOD Q close
+riverctl map normal $MOD Delete exit
+riverctl map normal $MOD BackSpace shutdown now
+riverctl map normal $MOD F toggle-float
+riverctl map normal Alt Return toggle-fullscreen
+
+### Borders
+riverctl border-width 2
+riverctl border-color-focused 0xffd79921
+riverctl border-color-unfocused 0xff504945
+riverctl border-color-urgent 0xffcc241d
+
+
+### -----------------
+### Launchers
+### -----------------
+riverctl map normal $MOD Return spawn "$TERM"
+riverctl map normal $MOD E spawn "$FILE"
+riverctl map normal $MOD B spawn "$BROWSER"
+
+
+riverctl map normal $MOD N spawn "kitty -e nvim"
+
+riverctl map normal $MOD R spawn "kitty -e reddix"
+riverctl map normal $MOD T spawn "kitty -e fish"
+riverctl map normal $MOD Y spawn "kitty -e ./ytx.sh"
+riverctl map normal $MOD O spawn "kitty --class cava cava"
+riverctl map normal $MOD K spawn "nvim ~/.config/river/init"
+
+### -----------------
+### Menus (rofi)
+### -----------------
+riverctl map normal $MOD A spawn "rofi -show drun"
+
+
+
+### -----------------
+### Focus movement (HJKL + arrows)
+### -----------------
+riverctl map normal $MOD H focus-view left
+riverctl map normal $MOD L focus-view right
+riverctl map normal $MOD K focus-view up
+riverctl map normal $MOD J focus-view down
+
+riverctl map normal $MOD Left focus-view left
+riverctl map normal $MOD Right focus-view right
+riverctl map normal $MOD Up focus-view up
+riverctl map normal $MOD Down focus-view down
+
+riverctl map normal Alt Tab focus-view next
+
+### -----------------
+### Move windows
+### -----------------
+riverctl map normal $MOD Shift H move-view left
+riverctl map normal $MOD Shift L move-view right
+riverctl map normal $MOD Shift K move-view up
+riverctl map normal $MOD Shift J move-view down
+
+### -----------------
+### Resize
+### -----------------
+riverctl map normal $MOD Control H resize left 60
+riverctl map normal $MOD Control L resize right 60
+riverctl map normal $MOD Control K resize up 60
+riverctl map normal $MOD Control J resize down 60
+
+### -----------------
+### Tags (workspaces)
+### -----------------
+for i in 1 2 3 4 5 6 7 8 9; do
+    tag=$((1 << ($i - 1)))
+    riverctl map normal $MOD $i set-focused-tags $tag
+    riverctl map normal $MOD Shift $i set-view-tags $tag
+done
+
+### -----------------
+### Layout
+### -----------------
+riverctl default-layout rivertile
+rivertile -view-padding 6 -outer-padding 6 &
+
+### -----------------
+### Input
+### -----------------
+riverctl keyboard-layout us
+
+
+# swww wallpaper
+riverctl spawn "swww-daemon &"
+riverctl spawn "swww img ~/Wallpapers/wallpapers/brooding.png --transition-type none"
+riverctl spawn "$scrPath/swwwallpapers.sh"
+
+# Cursor theme
+riverctl xcursor-theme 'Bibata-Modern-Ice' 20
+
+### -----------------
+### Autostart
+### -----------------
+# Tags
+for i in $(seq 1 10); do
+    riverctl spawn "riverctl tag $i"
+done
+# 1. Define Window Rules (Bitmask: Tag 1=1, Tag 2=2, Tag 3=4, Tag 4=8)
+riverctl rule-add -app-id "kitty-tag1" tags 1
+riverctl rule-add -app-id "librewolf"  tags 2
+riverctl rule-add -app-id "yazi-term"  tags 4
+riverctl rule-add -app-id "btop-term"  tags 8
+riverctl rule-add -app-id "clock-term" tags 16
+
+# 2. Spawn the apps using --class (or --app-id) to match the rules above
+riverctl spawn "kitty --class kitty-tag1 -e fish"
+riverctl spawn "librewolf"
+riverctl spawn "kitty --class yazi-term -e sh -c 'yazi'"
+riverctl spawn "kitty --class clock-term -e tty-clock -c"
+riverctl spawn "kitty --class btop-term -e btop"
+
+(sleep 2; riverctl keyboard-layout -options "caps:swapescape" us) &
+
+
