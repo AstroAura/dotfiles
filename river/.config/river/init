@@ -1,6 +1,17 @@
 !/bin/sh
+
 MOD=Super
-$scrPath = $HOME/.local/share/bin # set scripts path
+
+riverctl background-color 0x52493f
+
+# swww wallpaper
+riverctl spawn "swww-daemon &"
+riverctl spawn "swww img ~/Wallpapers/wallpapers/brooding.png --transition-type none"
+riverctl spawn "$scrPath/swwwallpapers.sh"
+
+# Cursor theme
+riverctl xcursor-theme 'Bibata-Modern-Ice' 20
+
 ### -----------------
 ### Applications
 ### -----------------
@@ -13,9 +24,9 @@ BROWSER="librewolf"
 ### -----------------
 riverctl map normal $MOD Q close
 riverctl map normal $MOD Delete exit
-riverctl map normal $MOD BackSpace shutdown now
 riverctl map normal $MOD F toggle-float
 riverctl map normal Alt Return toggle-fullscreen
+riverctl map normal Print exec ~/.local/bin/screenshot.sh
 
 ### Borders
 riverctl border-width 2
@@ -31,9 +42,7 @@ riverctl map normal $MOD Return spawn "$TERM"
 riverctl map normal $MOD E spawn "$FILE"
 riverctl map normal $MOD B spawn "$BROWSER"
 
-
 riverctl map normal $MOD N spawn "kitty -e nvim"
-
 riverctl map normal $MOD R spawn "kitty -e reddix"
 riverctl map normal $MOD T spawn "kitty -e fish"
 riverctl map normal $MOD Y spawn "kitty -e ./ytx.sh"
@@ -60,23 +69,19 @@ riverctl map normal $MOD Right focus-view right
 riverctl map normal $MOD Up focus-view up
 riverctl map normal $MOD Down focus-view down
 
-riverctl map normal Alt Tab focus-view next
+riverctl map normal Control+Tab focus-view next
 
 ### -----------------
 ### Move windows
-### -----------------
-riverctl map normal $MOD Shift H move-view left
-riverctl map normal $MOD Shift L move-view right
-riverctl map normal $MOD Shift K move-view up
-riverctl map normal $MOD Shift J move-view down
+### ------------------
+riverctl map normal $MOD+Alt right send-layout-cmd rivertile "main-ratio +0.05"
+riverctl map normal $MOD+Alt left  send-layout-cmd rivertile "main-ratio -0.05"
 
-### -----------------
-### Resize
-### -----------------
-riverctl map normal $MOD Control H resize left 60
-riverctl map normal $MOD Control L resize right 60
-riverctl map normal $MOD Control K resize up 60
-riverctl map normal $MOD Control J resize down 60
+
+riverctl map normal $MOD+Alt L send-layout-cmd rivertile "main-ratio +0.05"
+riverctl map normal $MOD+Alt H  send-layout-cmd rivertile "main-ratio -0.05"
+
+
 
 ### -----------------
 ### Tags (workspaces)
@@ -91,21 +96,22 @@ done
 ### Layout
 ### -----------------
 riverctl default-layout rivertile
-rivertile -view-padding 6 -outer-padding 6 &
+rivertile -view-padding 3 -outer-padding 3 &
+
+
+### -----------------
+### Resize
+### -----------------
+riverctl map normal $MOD+Shift L resize horizontal -100
+riverctl map normal $MOD+Shift J resize vertical 100
+riverctl map normal $MOD+Shift K resize vertical -100
+riverctl map normal $MOD+Shift H resize horizontal 100
+
 
 ### -----------------
 ### Input
 ### -----------------
 riverctl keyboard-layout us
-
-
-# swww wallpaper
-riverctl spawn "swww-daemon &"
-riverctl spawn "swww img ~/Wallpapers/wallpapers/brooding.png --transition-type none"
-riverctl spawn "$scrPath/swwwallpapers.sh"
-
-# Cursor theme
-riverctl xcursor-theme 'Bibata-Modern-Ice' 20
 
 ### -----------------
 ### Autostart
