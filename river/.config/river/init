@@ -26,7 +26,8 @@ riverctl map normal $MOD Q close
 riverctl map normal $MOD Delete exit
 riverctl map normal $MOD F toggle-float
 riverctl map normal Alt Return toggle-fullscreen
-riverctl map normal Print exec ~/.local/bin/screenshot.sh
+riverctl map normal $MOD S spawn "sh -c '~/.local/bin/screenshot.sh'"
+riverctl map normal $MOD BackSpace spawn "sh -c 'shutdown now'"
 
 ### Borders
 riverctl border-width 2
@@ -53,7 +54,6 @@ riverctl map normal $MOD K spawn "nvim ~/.config/river/init"
 ### Menus (rofi)
 ### -----------------
 riverctl map normal $MOD A spawn "rofi -show drun"
-
 
 
 ### -----------------
