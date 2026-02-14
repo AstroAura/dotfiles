@@ -1,7 +1,7 @@
 local M = {}
 
-M.ui = {
-  theme = "lavendusk",
+M.base46 = {
+  theme = "custom_gruvbox",
 }
 
 
