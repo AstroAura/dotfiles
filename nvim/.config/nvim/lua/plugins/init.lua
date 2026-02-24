@@ -2,9 +2,20 @@ return {
   -- ✅ LSP
   {
     "neovim/nvim-lspconfig",
-    config = function()
-      require("configs.lspconfig")
-    end,
+    opts = {
+      servers = {
+        clangd = {},
+        pyright = {},
+      }
+    }
+  },
+
+  {
+    "williamboman/mason-lspconfig.nvim",
+    opts = {
+      ensure_installed = {"clangd", "pyright"},
+      automatic_installation = true,
+    },
   },
 
   -- ✅ Treesitter
@@ -12,6 +23,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
+        "clangd",
         "vim",
         "lua",
         "vimdoc",

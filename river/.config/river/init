@@ -2,11 +2,11 @@
 
 MOD=Super
 
-riverctl background-color 0x52493f
+riverctl background-color 0x1b1b19
 
 # swww wallpaper
 riverctl spawn "swww-daemon &"
-riverctl spawn "swww img ~/Wallpapers/wallpapers/brooding.png --transition-type none"
+riverctl spawn "swww img ~/Wallpapers/wallpapers/deer.jpg --transition-type none"
 riverctl spawn "$scrPath/swwwallpapers.sh"
 
 # Cursor theme
@@ -125,14 +125,14 @@ riverctl rule-add -app-id "kitty-tag1" tags 1
 riverctl rule-add -app-id "librewolf"  tags 2
 riverctl rule-add -app-id "yazi-term"  tags 4
 riverctl rule-add -app-id "btop-term"  tags 8
-riverctl rule-add -app-id "clock-term" tags 16
+riverctl rule-add -app-id "minder" tags 16
 
 # 2. Spawn the apps using --class (or --app-id) to match the rules above
 riverctl spawn "kitty --class kitty-tag1 -e fish"
 riverctl spawn "librewolf"
 riverctl spawn "kitty --class yazi-term -e sh -c 'yazi'"
-riverctl spawn "kitty --class clock-term -e tty-clock -c"
 riverctl spawn "kitty --class btop-term -e btop"
+riverctl spawn "minder"
 
 (sleep 2; riverctl keyboard-layout -options "caps:swapescape" us) &
 

@@ -2,7 +2,9 @@
 require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
-
+require("lspconfig").clangd.setup{
+  single_file_support = true,
+}
 -- EXAMPLE
 local servers = { "html", "cssls" }
 local nvlsp = require "nvchad.configs.lspconfig"
