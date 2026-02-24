@@ -28,6 +28,7 @@ riverctl map normal $MOD F toggle-float
 riverctl map normal Alt Return toggle-fullscreen
 riverctl map normal $MOD S spawn "sh -c '~/.local/bin/screenshot.sh'"
 riverctl map normal $MOD BackSpace spawn "sh -c 'shutdown now'"
+riverctl map normal $MOD W spawn "sh -c '~/.local/bin/wallpaper-selector.sh'"
 
 ### Borders
 riverctl border-width 2
@@ -126,7 +127,7 @@ riverctl rule-add -app-id "librewolf"  tags 2
 riverctl rule-add -app-id "yazi-term"  tags 4
 riverctl rule-add -app-id "btop-term"  tags 8
 riverctl rule-add -app-id "minder" tags 16
-
+riverctl rule-add -app-id floating-preview float
 # 2. Spawn the apps using --class (or --app-id) to match the rules above
 riverctl spawn "kitty --class kitty-tag1 -e fish"
 riverctl spawn "librewolf"
