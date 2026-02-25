@@ -38,6 +38,11 @@ function fish_prompt
             echo -n "$battery_percent "
         end
     end
+ 
+    # Date 
+    set_color magenta
+    echo -n " "(date "+%a %d %b")" "
+ 
     # Current time
     set -l current_time (date "+%H:%M")
     echo -n "$magenta󰅐$normal $current_time "
