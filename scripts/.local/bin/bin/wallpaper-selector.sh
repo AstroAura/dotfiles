@@ -31,7 +31,8 @@ element-icon {
 }
 
 element-text {
-    enabled: false;
+    enabled: true;
+    horizontal-align: 0.5;
 }
 entry{
   placeholder: "Search Wallpapers";
