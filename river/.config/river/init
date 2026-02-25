@@ -28,8 +28,8 @@ riverctl map normal $MOD F toggle-float
 riverctl map normal Alt Return toggle-fullscreen
 riverctl map normal $MOD S spawn "sh -c '~/.local/bin/screenshot.sh'"
 riverctl map normal $MOD BackSpace spawn "sh -c 'shutdown now'"
-riverctl map normal $MOD W spawn "sh -c '~/.local/bin/wallpaper-selector.sh'"
-
+riverctl map normal $MOD W spawn "sh -c '~/.local/bin/bin/wallpaper-selector.sh'"
+riverctl map normal $MOD Return zoom
 ### Borders
 riverctl border-width 2
 riverctl border-color-focused 0xffd79921
@@ -40,7 +40,6 @@ riverctl border-color-urgent 0xffcc241d
 ### -----------------
 ### Launchers
 ### -----------------
-riverctl map normal $MOD Return spawn "$TERM"
 riverctl map normal $MOD E spawn "$FILE"
 riverctl map normal $MOD B spawn "$BROWSER"
 
