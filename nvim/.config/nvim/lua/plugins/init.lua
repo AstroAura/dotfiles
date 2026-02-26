@@ -1,29 +1,40 @@
 return {
   -- ✅ LSP
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        clangd = {},
-        pyright = {},
-      }
-    }
+{
+  "neovim/nvim-lspconfig",
+  opts = {
+    servers = {
+      gopls = {
+        cmd = { "gopls" },
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        root_dir = require("lspconfig.util").root_pattern("go.work", "go.mod", ".git"),
+        settings = {
+          gopls = {
+            analyses = { unusedparams = true },
+            staticcheck = true,
+            completeUnimported = true,
+          },
+        },
+      },
+
+      clangd = {},
+      pyright = {},
+    },
   },
+},
 
   {
     "williamboman/mason-lspconfig.nvim",
     opts = {
-      ensure_installed = {"clangd", "pyright"},
+      ensure_installed = {"clangd", "pyright","gopls"},
       automatic_installation = true,
     },
   },
-
   -- ✅ Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "clangd",
         "vim",
         "lua",
         "vimdoc",
@@ -241,4 +252,5 @@ return {
     end,
   },
 }
+
 
