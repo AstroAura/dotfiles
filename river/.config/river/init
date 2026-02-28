@@ -15,8 +15,8 @@ riverctl xcursor-theme 'Bibata-Modern-Ice' 20
 ### -----------------
 ### Applications
 ### -----------------
-TERM="kitty"
-FILE="kitty -e yazi"
+TERM="foot"
+FILE="foot -e yazi"
 BROWSER="librewolf"
 
 ### -----------------
@@ -28,7 +28,7 @@ riverctl map normal $MOD F toggle-float
 riverctl map normal Alt Return toggle-fullscreen
 riverctl map normal $MOD S spawn "sh -c '~/.local/bin/screenshot.sh'"
 riverctl map normal $MOD BackSpace spawn "sh -c 'shutdown now'"
-riverctl map normal $MOD W spawn "sh -c '~/.local/bin/bin/wallpaper-selector.sh'"
+riverctl map normal $MOD W spawn "sh -c '~/.local/bin/wallpaper-selector.sh'"
 riverctl map normal $MOD Return zoom
 riverctl map normal $MOD F11 spawn "brightnessctl set 5%+" 
 riverctl map normal $MOD F12 spawn "brightnessctl set 5%-"
@@ -46,11 +46,11 @@ riverctl border-color-urgent 0xffcc241d
 riverctl map normal $MOD E spawn "$FILE"
 riverctl map normal $MOD B spawn "$BROWSER"
 
-riverctl map normal $MOD N spawn "kitty -e nvim"
-riverctl map normal $MOD R spawn "kitty -e reddix"
-riverctl map normal $MOD T spawn "kitty -e fish"
-riverctl map normal $MOD Y spawn "kitty -e ./ytx.sh"
-riverctl map normal $MOD O spawn "kitty --class cava cava"
+riverctl map normal $MOD N spawn "foot -e nvim"
+riverctl map normal $MOD R spawn "foot -e reddix"
+riverctl map normal $MOD T spawn "foot"
+riverctl map normal $MOD Y spawn "foot -e ./ytx.sh"
+riverctl map normal $MOD O spawn "foot --app-id=cava -e cava"
 riverctl map normal $MOD K spawn "nvim ~/.config/river/init"
 
 ### -----------------
@@ -124,17 +124,18 @@ for i in $(seq 1 10); do
     riverctl spawn "riverctl tag $i"
 done
 # 1. Define Window Rules (Bitmask: Tag 1=1, Tag 2=2, Tag 3=4, Tag 4=8)
-riverctl rule-add -app-id "kitty-tag1" tags 1
+riverctl rule-add -app-id "foot-tag1" tags 1
 riverctl rule-add -app-id "librewolf"  tags 2
 riverctl rule-add -app-id "yazi-term"  tags 4
 riverctl rule-add -app-id "btop-term"  tags 8
 riverctl rule-add -app-id "minder" tags 16
 riverctl rule-add -app-id floating-preview float
+
 # 2. Spawn the apps using --class (or --app-id) to match the rules above
-riverctl spawn "kitty --class kitty-tag1 -e fish"
+riverctl spawn "foot --app-id=foot-tag1"
 riverctl spawn "librewolf"
-riverctl spawn "kitty --class yazi-term -e sh -c 'yazi'"
-riverctl spawn "kitty --class btop-term -e btop"
+riverctl spawn "foot --app-id=yazi-term -e sh -c 'yazi'"
+riverctl spawn "foot --app-id=btop-term -e btop"
 riverctl spawn "minder"
 
 (sleep 2; riverctl keyboard-layout -options "caps:swapescape" us) &
