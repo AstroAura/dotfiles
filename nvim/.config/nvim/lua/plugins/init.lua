@@ -23,7 +23,7 @@ return {
   },
 },
 
-  {
+ {
     "williamboman/mason-lspconfig.nvim",
     opts = {
       ensure_installed = {"clangd", "pyright","gopls"},
@@ -177,6 +177,12 @@ return {
           long_message_to_split = true,
           inc_rename = false,
           lsp_doc_border = false,
+        },
+        opts={
+          notify={
+            enabled = true,
+            background_colour = "#090807"
+          }
         },
       })
 

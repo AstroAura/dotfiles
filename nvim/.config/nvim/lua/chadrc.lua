@@ -2,6 +2,7 @@ local M = {}
 
 M.base46 = {
   theme = "custom_gruvbox",
+  transparent = true,
 }
 
 
