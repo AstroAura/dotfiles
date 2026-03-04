@@ -172,11 +172,6 @@ return {
           }
         },
       })
-
-      vim.keymap.set("n", "<leader>ss", function()
-        vim.o.spell = not vim.o.spell
-        vim.notify("Spell " .. (vim.o.spell and "enabled" or "disabled"), vim.log.levels.INFO)
-      end, { silent = true, desc = "Toggle spell check" })
     end,
   },
 
@@ -230,20 +225,4 @@ return {
       vim.keymap.set("n", "<leader>ms", ":LivePreview stop<CR>", { desc = "Stop Markdown Preview" })
     end,
   },
-
-  -- ✅ Enable spell automatically for markdown/text
-  {
-    "nvim-treesitter/nvim-treesitter",
-    config = function()
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "markdown", "text" },
-        callback = function()
-          vim.opt_local.spell = true
-          vim.opt_local.spelllang = "en_us"
-        end,
-      })
-    end,
-  },
 }
-
-
