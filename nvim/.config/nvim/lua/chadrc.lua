@@ -1,7 +1,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "custom_gruvbox",
+  theme = "coffee",
   transparent = true,
 }
 

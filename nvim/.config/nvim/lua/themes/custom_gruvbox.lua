@@ -61,6 +61,7 @@ M.base_16 = {
 
 M.type = "dark"
 
+
 M.polish_hl = {
   Comment = { fg = "#88827c", italic = true },
   Keyword = { fg = "#87725F" },
