@@ -120,7 +120,7 @@
         {
             "type": "command",
             "key": "  󰅐 Last Update",
-            "text": "date -d \"$(grep 'starting full system upgrade' /var/log/pacman.log | tail -1 | cut -d']' -f1 | tr -d '[')\" '+%d %b %Y %H:%M'"
+            "text": "date -d \"$(grep 'starting full system upgrade' /var/log/pacman.log | tail -1 | cut -d']' -f1 | tr -d '[')\" '+%a %d %b %Y %H:%M'"
         },
 
 
