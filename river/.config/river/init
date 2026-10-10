@@ -4,13 +4,16 @@ MOD=Super
 
 riverctl background-color 0x1b1b19
 
-# swww wallpaper
-riverctl spawn "swww-daemon &"
-riverctl spawn "swww img ~/Wallpapers/wallpapers/deer.jpg --transition-type none"
-riverctl spawn "$scrPath/swwwallpapers.sh"
+# awww wallpaper
+riverctl spawn "awww-daemon &"
+riverctl spawn "awww img ~/Wallpapers/wallpapers/deer.jpg --transition-type none"
+riverctl spawn "$scrPath/awwwallpapers.sh"
 
 # Cursor theme
 riverctl xcursor-theme 'Bibata-Modern-Ice' 20
+
+# Touchpad
+riverctl input pointer-2-7-SynPS/2_Synaptics_TouchPad tap enabled
 
 ### -----------------
 ### Applications
@@ -52,7 +55,7 @@ riverctl map normal $MOD T spawn "foot"
 riverctl map normal $MOD Y spawn "foot -e ./ytx.sh"
 riverctl map normal $MOD O spawn "foot --app-id=cava -e cava"
 riverctl map normal $MOD K spawn "nvim ~/.config/river/init"
-
+riverctl map normal $MOD G spawn "lutris"
 ### -----------------
 ### Menus (rofi)
 ### -----------------
@@ -85,14 +88,13 @@ riverctl map normal $MOD+Alt L send-layout-cmd rivertile "main-ratio +0.05"
 riverctl map normal $MOD+Alt H  send-layout-cmd rivertile "main-ratio -0.05"
 
 
-
 ### -----------------
 ### Tags (workspaces)
 ### -----------------
 for i in 1 2 3 4 5 6 7 8 9; do
     tag=$((1 << ($i - 1)))
     riverctl map normal $MOD $i set-focused-tags $tag
-    riverctl map normal $MOD Shift $i set-view-tags $tag
+    riverctl map normal $MOD+Alt $i set-view-tags $tag
 done
 
 ### -----------------
@@ -115,6 +117,7 @@ riverctl map normal $MOD+Shift H resize horizontal 100
 ### Input
 ### -----------------
 riverctl keyboard-layout us
+riverctl set-repeat 40 450
 
 ### -----------------
 ### Autostart
@@ -128,7 +131,7 @@ riverctl rule-add -app-id "foot-tag1" tags 1
 riverctl rule-add -app-id "librewolf"  tags 2
 riverctl rule-add -app-id "yazi-term"  tags 4
 riverctl rule-add -app-id "btop-term"  tags 8
-riverctl rule-add -app-id "minder" tags 16
+riverctl rule-add -app-id "localsend_app" tags 16
 riverctl rule-add -app-id floating-preview float
 
 # 2. Spawn the apps using --class (or --app-id) to match the rules above
@@ -136,7 +139,9 @@ riverctl spawn "foot --app-id=foot-tag1"
 riverctl spawn "librewolf"
 riverctl spawn "foot --app-id=yazi-term -e sh -c 'yazi'"
 riverctl spawn "foot --app-id=btop-term -e btop"
-riverctl spawn "minder"
+riverctl spawn "~/Downloads/localsend.AppImage"
+riverctl spawn "mako"
+riverctl spawn "lowbattery"
 
 (sleep 2; riverctl keyboard-layout -options "caps:swapescape" us) &
 
