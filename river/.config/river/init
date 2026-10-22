@@ -6,7 +6,7 @@ riverctl background-color 0x1b1b19
 
 # awww wallpaper
 riverctl spawn "awww-daemon &"
-riverctl spawn "awww img ~/Wallpapers/wallpapers/deer.jpg --transition-type none"
+riverctl spawn "awww img ~/Wallpapers/wallpapers/snakegirl.png --transition-type none"
 riverctl spawn "$scrPath/awwwallpapers.sh"
 
 # Cursor theme
@@ -28,6 +28,7 @@ BROWSER="librewolf"
 riverctl map normal $MOD Q close
 riverctl map normal $MOD Delete exit
 riverctl map normal $MOD F toggle-float
+riverctl map normal $MOD R spawn "sh -c 'reboot'"
 riverctl map normal Alt Return toggle-fullscreen
 riverctl map normal $MOD S spawn "sh -c '~/.local/bin/screenshot.sh'"
 riverctl map normal $MOD BackSpace spawn "sh -c 'shutdown now'"
