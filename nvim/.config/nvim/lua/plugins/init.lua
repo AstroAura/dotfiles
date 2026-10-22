@@ -158,6 +158,14 @@ return {
         cmdline = { enabled = true, view = "cmdline_popup" },
         messages = { enabled = true },
         popupmenu = { enabled = true },
+        lsp = {
+          signature = {
+            enabled = true,
+            auto_open = { enabled = false },
+            opts = { focusable = false },
+          },
+          hover = {enabled = false},
+        },
         presets = {
           bottom_search = false,
           command_palette = false,
@@ -165,29 +173,9 @@ return {
           inc_rename = false,
           lsp_doc_border = false,
         },
-        opts={
-          notify={
-            enabled = true,
-            background_colour = "#090807",
-          opts={
-            lsp={
-              signature={
-                enabled=true,
-                opts={
-                  focusable = false
-
-                },
-
-              },
-            },
-          }
-        }
-        },
       })
-    end,
-  },
-
-  -- ✅ Zen Mode
+    end},
+          -- ✅ Zen Mode
   -- ✅ Live Markdown Preview
   {
     "brianhuster/live-preview.nvim",
