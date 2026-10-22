@@ -160,7 +160,7 @@ return {
         popupmenu = { enabled = true },
         lsp = {
           signature = {
-            enabled = true,
+            enabled = false,
             auto_open = { enabled = false },
             opts = { focusable = false },
           },
