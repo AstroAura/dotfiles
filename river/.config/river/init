@@ -36,6 +36,7 @@ riverctl map normal $MOD W spawn "sh -c '~/.local/bin/wallpaper-selector.sh'"
 riverctl map normal $MOD Return zoom
 riverctl map normal $MOD F11 spawn "brightnessctl set 5%+" 
 riverctl map normal $MOD F12 spawn "brightnessctl set 5%-"
+riverctl map normal $MOD L spawn "sh -c '~/.local/bin/batterynotify.sh'"
 
 ### Borders
 riverctl border-width 2
