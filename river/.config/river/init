@@ -28,7 +28,7 @@ BROWSER="librewolf"
 riverctl map normal $MOD Q close
 riverctl map normal $MOD Delete exit
 riverctl map normal $MOD F toggle-float
-riverctl map normal $MOD R spawn "sh -c 'reboot'"
+riverctl map normal $MOD Home spawn "sh -c 'reboot'"
 riverctl map normal Alt Return toggle-fullscreen
 riverctl map normal $MOD S spawn "sh -c '~/.local/bin/screenshot.sh'"
 riverctl map normal $MOD BackSpace spawn "sh -c 'shutdown now'"
