@@ -155,13 +155,19 @@ return {
         cmdline = { enabled = true, view = "cmdline_popup" },
         messages = { enabled = true },
         popupmenu = { enabled = true },
+        vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { fg = "#756554" }),
+        vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderSearch", { fg = "#695748" }),
         lsp = {
           signature = {
             enabled = true,
             auto_open = { enabled = false },
             opts = { focusable = false },
           },
-          hover = {enabled = false},
+          hover = {
+            enabled = false,
+            silent = true,
+            trigger = false,
+          },
         },
         presets = {
           bottom_search = false,
