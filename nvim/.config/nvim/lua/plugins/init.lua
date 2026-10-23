@@ -2,13 +2,10 @@ return {
   -- ✅ LSP
 {
   "neovim/nvim-lspconfig",
-  opts = {
-    servers = {
-      clangd = {},
-      pyright = {},
+  config = function ()
+    vim.lsp.enable({"clangd", "pyright","gopls"})
+  end
     },
-  },
-},
 
  {
     "williamboman/mason-lspconfig.nvim",
