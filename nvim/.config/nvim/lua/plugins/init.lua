@@ -157,7 +157,7 @@ return {
         popupmenu = { enabled = true },
         lsp = {
           signature = {
-            enabled = false,
+            enabled = true,
             auto_open = { enabled = false },
             opts = { focusable = false },
           },
