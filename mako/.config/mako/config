@@ -1,0 +1,6 @@
+background-color=#1b1b19
+text-color=#a07858
+border-color=#88827c
+progress-color=over #756554
+default-timeout=5000
+layer=overlay
