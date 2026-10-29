@@ -6,7 +6,7 @@ riverctl background-color 0x1b1b19
 
 # awww wallpaper
 riverctl spawn "awww-daemon &"
-riverctl spawn "awww img ~/Wallpapers/wallpapers/snakegirl.png --transition-type none"
+riverctl spawn "awww img ~/Wallpapers/wallpapers/deer.jpg --transition-type none"
 riverctl spawn "$scrPath/awwwallpapers.sh"
 
 # Cursor theme
@@ -50,7 +50,6 @@ riverctl border-color-urgent 0xffcc241d
 ### -----------------
 riverctl map normal $MOD E spawn "$FILE"
 riverctl map normal $MOD B spawn "$BROWSER"
-
 riverctl map normal $MOD N spawn "foot -e nvim"
 riverctl map normal $MOD R spawn "foot -e reddix"
 riverctl map normal $MOD T spawn "foot"
@@ -58,6 +57,7 @@ riverctl map normal $MOD Y spawn "foot -e ./ytx.sh"
 riverctl map normal $MOD O spawn "foot --app-id=cava -e cava"
 riverctl map normal $MOD K spawn "nvim ~/.config/river/init"
 riverctl map normal $MOD G spawn "lutris"
+riverctl map normal $MOD M spawn "foot --app-id=drift-term -e drift"
 ### -----------------
 ### Menus (rofi)
 ### -----------------
@@ -135,6 +135,8 @@ riverctl rule-add -app-id "yazi-term"  tags 4
 riverctl rule-add -app-id "btop-term"  tags 8
 riverctl rule-add -app-id "localsend_app" tags 16
 riverctl rule-add -app-id floating-preview float
+riverctl rule-add -app-id "drift-term"  tags 32
+riverctl rule-add -app-id "cava" tags 32
 
 # 2. Spawn the apps using --class (or --app-id) to match the rules above
 riverctl spawn "foot --app-id=foot-tag1"
@@ -144,6 +146,8 @@ riverctl spawn "foot --app-id=btop-term -e btop"
 riverctl spawn "~/Downloads/localsend.AppImage"
 riverctl spawn "mako"
 riverctl spawn "lowbattery"
+riverctl spawn "foot --app-id=drift-term -e drift"
+riverctl spawn "foot --app-id=cava -e cava"
 
 (sleep 2; riverctl keyboard-layout -options "caps:swapescape" us) &
 
