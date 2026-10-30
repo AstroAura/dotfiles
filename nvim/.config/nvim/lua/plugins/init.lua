@@ -159,7 +159,7 @@ return {
         vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderSearch", { fg = "#695748" }),
         lsp = {
           signature = {
-            enabled = true,
+            enabled = false,
             auto_open = { enabled = false },
             opts = { focusable = false },
           },
