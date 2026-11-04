@@ -132,16 +132,16 @@ done
 riverctl rule-add -app-id "foot-tag1" tags 1
 riverctl rule-add -app-id "librewolf"  tags 2
 riverctl rule-add -app-id "yazi-term"  tags 4
-riverctl rule-add -app-id "btop-term"  tags 8
-riverctl rule-add -app-id "localsend_app" tags 16
+# riverctl rule-add -app-id "btop-term"  tags 8
+riverctl rule-add -app-id "localsend_app" tags 8
 riverctl rule-add -app-id floating-preview float
-riverctl rule-add -app-id "drift-term"  tags 32
-riverctl rule-add -app-id "cava" tags 32
+riverctl rule-add -app-id "drift-term"  tags 16
+riverctl rule-add -app-id "cava" tags 16
 
 # 2. Spawn the apps using --class (or --app-id) to match the rules above
 riverctl spawn "foot --app-id=foot-tag1"
 riverctl spawn "librewolf"
-riverctl spawn "foot --app-id=yazi-term -e sh -c 'yazi'"
+# riverctl spawn "foot --app-id=yazi-term -e sh -c 'yazi'"
 riverctl spawn "foot --app-id=btop-term -e btop"
 riverctl spawn "~/Downloads/localsend.AppImage"
 riverctl spawn "mako"
