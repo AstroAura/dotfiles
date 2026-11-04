@@ -136,7 +136,7 @@ riverctl rule-add -app-id "btop-term"  tags 4
 riverctl rule-add -app-id "localsend_app" tags 16
 riverctl rule-add -app-id floating-preview float
 riverctl rule-add -app-id "drift-term"  tags 8
-riverctl rule-add -app-id "cava" tags 16
+riverctl rule-add -app-id "cava" tags 8
 
 # 2. Spawn the apps using --class (or --app-id) to match the rules above
 riverctl spawn "foot --app-id=foot-tag1"
