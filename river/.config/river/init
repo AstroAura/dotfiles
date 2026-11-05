@@ -1,13 +1,14 @@
 !/bin/sh
 
 MOD=Super
-
 riverctl background-color 0x1b1b19
 
 # awww wallpaper
 riverctl spawn "awww-daemon &"
 riverctl spawn "awww img ~/Wallpapers/wallpapers/deer.jpg --transition-type none"
 riverctl spawn "$scrPath/awwwallpapers.sh"
+
+tmux new-session -d -s main -n shell \; new-window -d -n yazi yazi
 
 # Cursor theme
 riverctl xcursor-theme 'Bibata-Modern-Ice' 20
@@ -139,7 +140,7 @@ riverctl rule-add -app-id "drift-term"  tags 4
 riverctl rule-add -app-id "cava" tags 4
 
 # 2. Spawn the apps using --class (or --app-id) to match the rules above
-riverctl spawn "foot --app-id=foot-tag1"
+riverctl spawn "foot --app-id=foot-tag1 -e sh -c 'tmux has-session -t main 2>/dev/null || sleep 1; exec tmux attach -t main'"
 riverctl spawn "librewolf"
 # riverctl spawn "foot --app-id=yazi-term -e sh -c 'yazi'"
 riverctl spawn "foot --app-id=btop-term -e btop"
